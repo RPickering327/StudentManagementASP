@@ -1,0 +1,85 @@
+﻿@model Student
+
+<div class="container">
+    <h5>Now you've made an account you can fill in a full application form which will be reviewed by one of our team.</h5>
+    <div class="row">
+        <div class="col-sm">
+            <form asp-action="Index" method="post" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <br />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="col-md-2 control-label">First name:</label>
+                        <div class="col-md-5">
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="col-md-2 control-label">Last name: </label>
+                        <div class="col-md-5">
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="col-md-2 control-label">Email: </label>
+                        <div class="col-md-5">
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MobileNumber" class="col-md-2 control-label">Mobile number: </label>
+                        <div class="col-md-5">
+                            <input asp-for="MobileNumber" class="form-control" />
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PredictedGrade" class="col-md-2 control-label">Predicted UCAS: </label>
+                        <div class="col-md-5">
+                            <input asp-for="PredictedGrade" class="form-control" />
+                            <span asp-validation-for="PredictedGrade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ActualGrade" class="col-md-2 control-label">Actual UCAS: </label>
+                        <div class="col-md-5">
+                            <input asp-for="ActualGrade" class="form-control" />
+                            <small id="actualGrade" class="form-text text-muted">
+                                If you do not have this yet, please enter 0 as your grade.
+                            </small>
+                            <span asp-validation-for="ActualGrade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MissionStatement" class="col-md-2 control-label">Mission statement: </label>
+                        <div class="col-md-5">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="MissionStatement"></textarea>
+                            <span asp-validation-for="MissionStatement" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProfilePicutreUrl" class="col-md-2 control-label">Profile Picture: </label>
+                        <div class="col-md-5">
+                            <input asp-for="ProfilePicutreUrl" class="form-control" />
+                            <span asp-validation-for="ProfilePicutreUrl" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-5">
+                            <input type="submit" class="btn btn-primary" value="Apply" />
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+<!DOCTYPE html>
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="~/lib/js/bootstrap.js"></script>
+    <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/content/site.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-invers navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <!-- Brand -->
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand">Student Management</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a asp-controller="Students" asp-action="Index" class="nav-link">Apply to join</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Admin
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="AddCourse">Add Course</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="navbar-nav ml-auto">
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="navbar-right" id="logoutForm">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a class="nav-item nav-link" href="javascript:document.getElementById('logoutForm').submit()"> Log off</a></li>
+                            </ul>
+                        </form>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a asp-controller="Account" asp-action="Register" class="navbar-nav nav-link">Register</a></li>
+                            <li><a asp-controller="Account" asp-action="Login" class="navbar-nav nav-link">Log in</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container body-content">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

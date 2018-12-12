@@ -1,0 +1,22 @@
+﻿
+@model Course
+
+<h2>@Model.Name</h2>
+
+
+<div class="thumbnail">
+    <img src="@Model.ImageUrl" alt="@Model.Name" />
+    <div class="caption-full">
+        <h5 class="pull-left"><b>Minimum grade: @Model.Grade</b></h5>
+        <h5 class="pull-right"><b> Spaces left: @Model.NumberOfSpaces</b></h5><br />
+        <h3>
+            <a>@Model.Name</a>
+        </h3>
+        <h4>@Model.ShortDescritpion</h4>
+        <p>@Model.LongDescription</p>
+
+    </div>
+
+
+
+</div>

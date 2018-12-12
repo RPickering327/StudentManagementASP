@@ -1,0 +1,25 @@
+﻿@model HomeViewModel
+
+
+
+
+<div class="container">
+    <h2>@Model.Title</h2>
+    <div class="row">
+        @foreach (var course in Model.Courses)
+        {
+
+            <div class="col-md-4">
+                <img src="@course.ImageThumbnailUrl" alt="..." class="img-thumbnail" height="220" width="220" />
+                <div class="caption">
+                    <h6 class="pull-right">Min Grade: @course.Grade</h6>
+                    <h4>
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@course.Id">@course.Name</a>
+                    </h4>
+                    <h4>@course.ShortDescritpion</h4>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
