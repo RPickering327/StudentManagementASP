@@ -1,4 +1,4 @@
-# StudentManagementASP
+Student Management ASP Core 2.1 application.
 
 0.1v
 - Bootstrap 3 -> 4: 80% done. 
@@ -23,4 +23,5 @@
   - Client side validation
   - Email account activation
   - Acceptance/Rejection email
+  - Host on azure(or any other host)
   
