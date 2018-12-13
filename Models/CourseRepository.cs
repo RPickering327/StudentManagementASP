@@ -14,7 +14,7 @@ namespace StudentManagement.Models
         }
 
 
-        //Check if the data is populated if not load the data from the database
+       
         public IEnumerable<Course> GetAllCourses()
         {
             return _appDbContext.Courses;

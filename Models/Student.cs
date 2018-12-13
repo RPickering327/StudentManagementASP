@@ -44,10 +44,12 @@ namespace StudentManagement.Models
         public string MissionStatement { get; set; }
 
         [Required]
-        [StringLength(25)]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone number")]
         public int MobileNumber { get; set; }
+
+
+        public bool EnrolledStudent { get; set; }
 
     }
 }

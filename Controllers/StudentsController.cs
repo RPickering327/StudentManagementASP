@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StudentManagement.Models;
-
-
+using StudentManagement.ViewModels;
+using System.Linq;
 
 namespace StudentManagement.Controllers
 {
@@ -47,6 +47,21 @@ namespace StudentManagement.Controllers
 
         }
 
+        public IActionResult EnrolledStudents()
+        {
+
+            var student = _studentRepository.GetAllStudents().OrderBy(c => c.StudentId);
+
+            var studentViewModel = new StudentViewModel()
+            {
+
+                Students = student.ToList()
+
+
+            };
+
+            return View(studentViewModel);
+        }
 
 
     }
