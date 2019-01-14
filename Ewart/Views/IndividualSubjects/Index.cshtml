@@ -1,0 +1,102 @@
+﻿@model Ewart.ViewModel.CourseViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container border-dark pt-3">
+    <p>
+        <h2 class="float-left">Lesson plans</h2>
+        <a asp-action="Create" class="btn btn-primary btn-lg active float-right m-md-auto mb-2" role="button" aria-pressed="true">Add new lesson plan</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        These are your current lesson plans. You can assign them to your timetable via the time table page once you've done this a parent will be able to see the lesson title and duration in there
+        hub portal.
+
+    </p>
+    @foreach (var item in Model.individualSubjects)
+    {
+        <table class="table table-striped table-secondary table-bordered">
+            <thead class="mt-2">
+                <tr class="bg-primary">
+                    <th colspan="5">
+                        Class / Name of subject
+                    </th>
+                    <th colspan="3">
+                        Teacher
+                    </th>
+                    <th colspan="3">
+                        Year Group
+                    </th>
+                    <th colspan="1">
+                        Duration
+                    </th>
+                    <th colspan="3">
+                        Edit / Delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.TeacherId)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => item.CourseId)
+                    </td>
+                    <td colspan="3">
+                        <a asp-action="Edit" asp-route-id="@item.SubjectId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.SubjectId">Delete</a>
+                    </td>
+                </tr>
+                <tr class="bg-primary">
+                    <th colspan="15">
+                        Learning objective
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="15">
+                        @Html.DisplayFor(modelItem => item.DescriptionOne)
+                    </td>
+                </tr>
+                <tr class="bg-primary">
+                    <th colspan="15">
+                        Learning activities
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="15">
+                        @Html.DisplayFor(modelItem => item.DescriptionTwo)
+                    </td>
+                </tr>
+                <tr class="bg-primary">
+                    <th colspan="15">
+                        Additional material
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="15">
+                        @Html.DisplayFor(modelItem => item.DescriptionThree)
+                    </td>
+                </tr>
+                <tr class="bg-primary">
+                    <th colspan="15">
+                        Discussion points
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="15">
+                        @Html.DisplayFor(modelItem => item.DescriptionFour)
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    }
+</div>

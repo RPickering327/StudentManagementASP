@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ewart", "Ewart\Ewart.csproj", "{20EC7EF2-C748-4ECB-9993-0ECBC6C102CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{CEDE532C-252F-4B35-A492-AAA4A4A08BE7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ewart.UI.Tests", "Ewart.UI.Tests\Ewart.UI.Tests.csproj", "{02EA20F9-2BB5-4FB4-8291-3A798D212666}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20EC7EF2-C748-4ECB-9993-0ECBC6C102CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20EC7EF2-C748-4ECB-9993-0ECBC6C102CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20EC7EF2-C748-4ECB-9993-0ECBC6C102CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20EC7EF2-C748-4ECB-9993-0ECBC6C102CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EA20F9-2BB5-4FB4-8291-3A798D212666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EA20F9-2BB5-4FB4-8291-3A798D212666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EA20F9-2BB5-4FB4-8291-3A798D212666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EA20F9-2BB5-4FB4-8291-3A798D212666}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA20F9-2BB5-4FB4-8291-3A798D212666} = {CEDE532C-252F-4B35-A492-AAA4A4A08BE7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {689EC350-2B95-4192-B274-3E142539F7BD}
+	EndGlobalSection
+EndGlobal

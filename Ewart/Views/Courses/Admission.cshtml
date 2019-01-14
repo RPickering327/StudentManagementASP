@@ -1,0 +1,103 @@
+﻿
+@model Ewart.ViewModel.BaseUserViewModel
+
+@{
+    ViewData["Title"] = "Admission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container mt-2 bg-light">
+    <p>
+
+        <hr class="bg-dark" />
+
+        <h7 class="float-left"><b>Applications open:</b> 9am, 17 September 2018 </h7>
+        <h7 class="float-right"><b> Applications close:</b> 5pm, 15 January 2019 </h7>
+
+        <br />
+        <br />
+
+        <hr class="bg-dark" />
+
+        <b>Our admission policy is:</b><br />
+
+        - We accepted a maximum of [number of students per year], as required by our local authority.<br />
+        - No minimum testing requirements or grades are required to apply for a spot.<br />
+        - All mandatory requirements as set by our local authority [Link here]<br /><br />
+
+        <b>Next steps:</b><br />
+        We also allow parents to apply online directly to the school. Once you register and make an account come back to this paged logged in and you'll see an application form.<br /><br />
+
+        <b>Why make an account:</b><br />
+        We usally take around [school response time], to reply to your emails. Once accepted and your child has been confirmed to be enrolled you can view their timetables, progress charts and learning path online.<br />
+        <br />
+
+        <b>Note: </b>If your child is not accepted, any details we had, will be deleted unless you appeal the the decision.
+    </p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        <hr class="bg-dark" />
+
+        <p>You'r logged in and seeing the correct tabs</p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-controller="BaseUsers" asp-action="Index" method="post" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Student.FirstName" class="control-label">First name</label>
+                        <input asp-for="Student.FirstName" class="form-control border-dark" />
+                        <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.LastName" class="control-label">Last name</label>
+                        <input asp-for="Student.LastName" class="form-control border-dark" />
+                        <span asp-validation-for="Student.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.DateOfBirth" class="control-label">Date of birth</label>
+                        <input type="date" asp-for="Student.DateOfBirth" class="form-control border-dark" />
+                        <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.Email" class="control-label">Email</label>
+                        <input type="email" asp-for="Student.Email" class="form-control border-dark" />
+                        <span asp-validation-for="Student.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.Address" class="control-label">Address</label>
+                        <input asp-for="Student.Address" class="form-control border-dark" />
+                        <span asp-validation-for="Student.Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Student.UserType" class="form-control" value="Student" />
+                        <span asp-validation-for="Student.UserType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.Allergies" class="control-label"></label>
+                        <input asp-for="Student.Allergies" class="form-control border-dark" />
+                        <span asp-validation-for="Student.Allergies" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.EmergencyContact" class="control-label">Parents number</label>
+                        <input asp-for="Student.EmergencyContact" class="form-control border-dark" />
+                        <span asp-validation-for="Student.EmergencyContact" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Student.Notes" class="control-label"></label>
+                        <input asp-for="Student.Notes" class="form-control border-dark" />
+                        <span asp-validation-for="Student.Notes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+

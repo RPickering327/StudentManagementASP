@@ -1,0 +1,64 @@
+﻿@model Ewart.Models.UserSettings
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container border-dark mt-3">
+    <h2 class="float-left">Edit - School details</h2><br />
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="OrganizationId" />
+                <div class="form-group">
+                    <label asp-for="OrganizationName" class="control-label">School name</label>
+                    <input asp-for="OrganizationName" class="form-control border-dark" />
+                    <span asp-validation-for="OrganizationName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LogoUrl" class="control-label">Logo URL (File upload to replace this)</label>
+                    <input asp-for="LogoUrl" class="form-control border-dark" />
+                    <span asp-validation-for="LogoUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label">Contact number</label>
+                    <input type="tel" asp-for="PhoneNumber" class="form-control border-dark" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Emaill Address</label>
+                    <input asp-for="Email" class="form-control border-dark" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShortDescription" class="control-label">School Moto</label>
+                    <input asp-for="ShortDescription" class="form-control border-dark" />
+                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LongDescription" class="control-label">School's long description</label>
+                    <textarea asp-for="LongDescription" class="form-control border-dark" rows="4"></textarea>
+                    <span asp-validation-for="LongDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label">Address:</label>
+                    <input asp-for="Address" class="form-control border-dark" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="YearlyBudget" class="control-label">Estimated yearly budget</label>
+                    <input asp-for="YearlyBudget" class="form-control border-dark" />
+                    <span asp-validation-for="YearlyBudget" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to details page</a>
+    </div>
+</div>

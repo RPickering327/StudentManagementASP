@@ -1,0 +1,67 @@
+﻿
+@model Ewart.Models.KPI.SchoolOverview
+
+@{
+    ViewData["Title"] = "School Performance";
+}
+
+<div class="container">
+
+    <p><h3>School performance charts</h3></p>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+            var data = google.visualization.arrayToDataTable([
+                @Html.Raw(Model.NumberOfStudents)
+            ]);
+
+            var options = {
+                title: 'Number of students per teacher',
+                chartArea: { width: '50%' },
+                hAxis: {
+                    title: 'Total count',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Teachers'
+                }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                @Html.Raw(Model.BudgetBurnDown)
+            ]);
+
+            var options = {
+                title: 'Expenses breakdown',
+                pieHole: 0.3,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <div id="chart_div" class="border border-secondary m-2 p-1"></div>
+    <div id="donutchart" class="border border-secondary m-2 p-1"></div>
+
+</div>

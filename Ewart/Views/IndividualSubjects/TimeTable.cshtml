@@ -1,0 +1,56 @@
+﻿@model Ewart.ViewModel.CourseViewModel
+
+
+@{
+    ViewData["Title"] = "TimeTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TimeTable</h2>
+
+<div class="container">
+
+
+    @foreach (var item in Model.CalDateTimes)
+    {
+
+        @Html.DisplayFor(modelItem => item);
+
+    }
+
+
+
+
+
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

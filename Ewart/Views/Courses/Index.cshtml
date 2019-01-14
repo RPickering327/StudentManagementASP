@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Ewart.Models.Courses.Course>
+
+@{
+    ViewData["Title"] = "Year groups";
+}
+
+<hr />
+
+<div class="container">
+    <p>
+        <h3 class="float-left">Manage year group</h3>
+
+        <a asp-action="Create" class="btn btn-primary btn-lg active float-right m-md-auto" role="button" aria-pressed="true">Add group</a>
+    </p>
+    <table class="table table-striped table-secondary table-bordered">
+        <thead>
+            <tr class="bg-primary">
+                <th>
+                    Course name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Teacher ID
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,61 @@
+﻿@model Ewart.Models.Courses.IndividualSubject
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>IndividualSubject</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SubjectId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeacherId" class="control-label"></label>
+                <input asp-for="TeacherId" class="form-control" />
+                <span asp-validation-for="TeacherId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label"></label>
+                <input asp-for="CourseId" class="form-control" />
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionOne" class="control-label"></label>
+                <input asp-for="DescriptionOne" class="form-control" />
+                <span asp-validation-for="DescriptionOne" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionTwo" class="control-label"></label>
+                <input asp-for="DescriptionTwo" class="form-control" />
+                <span asp-validation-for="DescriptionTwo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionThree" class="control-label"></label>
+                <input asp-for="DescriptionThree" class="form-control" />
+                <span asp-validation-for="DescriptionThree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionFour" class="control-label"></label>
+                <input asp-for="DescriptionFour" class="form-control" />
+                <span asp-validation-for="DescriptionFour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

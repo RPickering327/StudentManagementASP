@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Ewart.Models.UserSettings>
+
+@{
+    ViewData["Title"] = "School Details";
+}
+
+
+<div class="container border-dark pt-3">
+    <h2 class="float-left">School details</h2>
+    @foreach (var item in Model)
+    {
+        <a asp-action="Edit" asp-route-id="@item.OrganizationId" class="btn btn-primary btn-lg active float-right m-md-auto" role="button" aria-pressed="true">Edit profile</a>
+        <br />
+        <br />
+        <br />
+        <div class="row bg-primary p-4 border border-secondary font-weight-bold">
+            <div class="col-sm-4">School name</div>
+            <div class="col-sm-8">Logo</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 p-4 border border-secondary">@Html.DisplayFor(modelItem => item.OrganizationName)</div>
+            <div class="col-sm-8 p-4 border border-secondary"><img src="@Html.DisplayFor(modelItem => item.LogoUrl)" alt="Alternate Text" /></div>
+        </div>
+        <div class="row bg-primary border border-secondary font-weight-bold">
+            <div class="col-sm-4 p-4">Phone Number</div>
+            <div class="col-sm-4 p-4">Email Address</div>
+            <div class="col-sm-4 p-4">Address</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 p-4 border border-secondary">@Html.DisplayFor(modelItem => item.PhoneNumber)</div>
+            <div class="col-sm-4 p-4 border border-secondary">@Html.DisplayFor(modelItem => item.Email)</div>
+            <div class="col-sm-4 p-4 border border-secondary">@Html.DisplayFor(modelItem => item.Address)</div>
+        </div>
+        <div class="row bg-primary border border-secondary font-weight-bold">
+            <div class="col p-4">Short Descrption</div>
+        </div>
+        <div class="row border border-secondary">
+            <div class="col p-4">@Html.DisplayFor(modelItem => item.ShortDescription)</div>
+        </div>
+        <div class="row bg-primary border border-secondary font-weight-bold">
+            <div class="col p-4">Long Descrption</div>
+        </div>
+        <div class="row border border-secondary">
+            <div class="col p-4"> @Html.DisplayFor(modelItem => item.LongDescription)</div>
+        </div>
+        <div class="row bg-primary border border-secondary font-weight-bold">
+            <div class="col p-4">Yearly Budget</div>
+        </div>
+        <div class="row border border-secondary">
+            <div class="col p-4">£ @Html.DisplayFor(modelItem => item.YearlyBudget)</div>
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,172 @@
+﻿@model Ewart.ViewModel.BaseUserViewModel
+
+@{
+    ViewData["Title"] = "Student";
+}
+
+
+
+
+
+<div class="container">
+    <hr />
+
+    <h5>Add students to the system</h5>
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header bg-primary border-dark" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn-primary border-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        View/Edit current students
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table table-striped table-secondary table-bordered">
+                        <thead>
+                            <tr class="bg-primary">
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
+                                <th scope="col">D.O.B</th>
+                                <th scope="col">Parent email</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Allergies</th>
+                                <th scope="col">Parents Contact</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListStudents)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Allergies)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EmergencyContact)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a>
+                                        <a asp-action="Details" asp-route-id="@item.UserId">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9">
+                                        <b>Notes:</b><br />
+                                        @Html.DisplayFor(modelItem => item.Notes)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-primary border-dark" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn-primary border-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Add new students
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Index" method="post" role="form">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Student.FirstName" class="control-label">First name</label>
+                                    <input asp-for="Student.FirstName" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.LastName" class="control-label">Last name</label>
+                                    <input asp-for="Student.LastName" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.LastName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.DateOfBirth" class="control-label">Date of birth</label>
+                                    <input type="date" asp-for="Student.DateOfBirth" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.Email" class="control-label">Email</label>
+                                    <input type="email" asp-for="Student.Email" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.Address" class="control-label">Address</label>
+                                    <input asp-for="Student.Address" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" asp-for="Student.UserType" class="form-control" value="Student" />
+                                    <span asp-validation-for="Student.UserType" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.Allergies" class="control-label"></label>
+                                    <input asp-for="Student.Allergies" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.Allergies" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sel1">Teacher:</label>
+                                    <select class="form-control border-dark" asp-for="Student.TeacherId">
+                                        <option value="">Please select a teacher</option>
+                                        @foreach (var item in Model.ListUsers)
+                                        {
+                                            <option value=@Html.ValueFor(modelItem => item.UserId)> @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">Year Group:</label>
+                                    <select class="form-control border-dark" id="sel1" asp-for="Student.CourseId">
+                                        @foreach (var item in Model.Course)
+                                        {
+                                            <option value=@Html.ValueFor(modelItem => item.CourseId)> @Html.DisplayFor(modelItem => item.Name)</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.EmergencyContact" class="control-label">Parents number</label>
+                                    <input asp-for="Student.EmergencyContact" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.EmergencyContact" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Student.Notes" class="control-label"></label>
+                                    <input asp-for="Student.Notes" class="form-control border-dark" />
+                                    <span asp-validation-for="Student.Notes" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
