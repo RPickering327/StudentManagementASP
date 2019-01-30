@@ -1,7 +1,4 @@
 # StudentManagementASP
-Student Management (Ewart) - ASP.NET Core 2.1
-
-
 <b>Ewart - ASP.NET Core 2.1 Application</b><br>
 
 v0.1 : 
