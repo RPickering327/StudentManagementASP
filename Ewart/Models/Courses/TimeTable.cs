@@ -7,11 +7,15 @@ namespace Ewart.Models.Courses
 
         public int TimeTableId { get; set; }
 
+        public int TeacherId { get; set; }
+
         public DateTime DateOfLesson { get; set; }
 
         public TimeSpan Duration { get; set; }
 
-        public IndividualSubject SubjectDetails { get; set; }
+
+        public int SubjectDetailsSubjectId { get; set; }
+
 
     }
 }

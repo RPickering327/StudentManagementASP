@@ -6,51 +6,133 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TimeTable</h2>
+<div class="container m-2">
 
-<div class="container">
-
-
-    @foreach (var item in Model.CalDateTimes)
-    {
-
-        @Html.DisplayFor(modelItem => item);
-
-    }
+    <h3>Time table</h3>
+    <hr class="bg-dark" />
+    <div class="form-group">
 
 
 
 
+        <label for="sel1">Change month:</label>
+        <select class="form-control border-dark" id="monthSelection">
+            <option>Select month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+    </div>
 
+
+
+
+
+    <script>
+        $("#monthSelection").change(function () {
+
+            var optionValue = $('#monthSelection').val();
+
+            var month = optionValue;
+            localStorage.setItem("monthSelected", month);
+
+
+            window.location.replace(window.location.pathname + "?month=" + optionValue);
+
+
+
+        });
+
+
+        var month = localStorage.getItem("monthSelected");
+
+        document.getElementById('monthSelection').selectedIndex = month;
+
+    </script>
+
+
+    <hr class="bg-dark" />
     <table class="table table-hover table-dark">
         <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
+
+
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td></td>
-            </tr>
+
+            @foreach (var item in Model.CalDateTimes)
+            {
+                <tr>
+                    <th scope="row" style="width: 25%" class="border-right">
+                        @item.Date.ToString("dddd dd MMM yyyy")
+                    </th>
+                    <td style="width: 75%">
+                        <form asp-controller="IndividualSubjects" asp-action="TimeTable" method="post" role="form">
+                            <input type="hidden" value="2" asp-for="ClassTime.TeacherId" />
+                            <input type="hidden" value="@item" asp-for="ClassTime.DateOfLesson" />
+                            <select class="form-control border-dark custom-select-sm float-left" style="width: 20%" asp-for="ClassTime.SubjectDetailsSubjectId">
+
+                                @foreach (var subjects in Model.individualSubjects)
+                                {
+                                    <option value=@subjects.SubjectId>@subjects.Name</option>
+                                }
+                            </select>
+                            <span class="ml-2 mr-2 float-left"> Duration: </span>
+                            <div class="float-left">
+                                <input type="time" asp-for="ClassTime.Duration" class="form-control form-control-sm" />
+                            </div>
+
+                            <input type="submit" value="Add lesson" class="btn btn-primary float-right" />
+                        </form>
+
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <b class="float-left">Lessons planned for today: </b><br />
+                    </td>
+                    <td class="small">
+                        @foreach (var lesson in Model.PlannedLesson)
+                        {
+                            @if (item.Date == lesson.DateOfLesson)
+                            {
+
+                                @foreach (var subjects in Model.individualSubjects)
+                                {
+                                    if (subjects.SubjectId == lesson.SubjectDetailsSubjectId)
+                                    {
+
+                                        <p>
+                                            &nbsp;@Html.Raw(subjects.Name)   |  @Html.Raw(lesson.Duration.TotalHours) hour
+                                            | <a asp-controller="IndividualSubjects" asp-action="Index">View lesson plan</a> | <a href="#">Remove</a>
+
+                                        </p>
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    </td>
+
+
+                </tr>
+
+            }
+
         </tbody>
     </table>
-
 
 </div>

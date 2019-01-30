@@ -61,31 +61,31 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label asp-for="BaseUser2.FirstName" class="control-label">First name:</label>
-                            <input asp-for="BaseUser2.FirstName" class="form-control border-dark" />
+                            <input asp-for="BaseUser2.FirstName" class="form-control border-dark" id="FirstName" />
                             <span asp-validation-for="BaseUser2.FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <div class="form-group">
                             <label asp-for="BaseUser2.LastName" class="control-label">Last name:</label>
-                            <input asp-for="BaseUser2.LastName" class="form-control border-dark" />
+                            <input asp-for="BaseUser2.LastName" class="form-control border-dark" id="LastName" />
                             <span asp-validation-for="BaseUser2.LastName" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="BaseUser2.DateOfBirth" class="control-label">Date of birth:</label>
-                    <input asp-for="BaseUser2.DateOfBirth" class="form-control border-dark" type="date" />
+                    <input asp-for="BaseUser2.DateOfBirth" class="form-control border-dark" type="date" id="DateOfBirth" />
                     <span asp-validation-for="BaseUser2.DateOfBirth" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="BaseUser2.Email" class="control-label">Email:</label>
-                    <input asp-for="BaseUser2.Email" class="form-control border-dark" />
+                    <input asp-for="BaseUser2.Email" class="form-control border-dark" id="Email" />
                     <span asp-validation-for="BaseUser2.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="BaseUser2.Address" class="control-label">Address:</label>
-                    <input asp-for="BaseUser2.Address" class="form-control border-dark" />
+                    <input asp-for="BaseUser2.Address" class="form-control border-dark" id="Address" />
                     <span asp-validation-for="BaseUser2.Address" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -98,12 +98,12 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="BaseUser2.CostPerWeek" class="control-label">Cost per week:</label>
-                    <input asp-for="BaseUser2.CostPerWeek" class="form-control border-dark" />
+                    <label asp-for="BaseUser2.CostPerWeek" class="control-label" id="Salary">Cost per week:</label>
+                    <input asp-for="BaseUser2.CostPerWeek" class="form-control border-dark" id="CostPerWeek" />
                     <span asp-validation-for="BaseUser2.CostPerWeek" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary" id="submit" />
                 </div>
             </form>
         </div>

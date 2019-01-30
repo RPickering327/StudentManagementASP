@@ -48,10 +48,10 @@
             @Html.DisplayFor(model => model.UserType)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="UserId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <input type="submit" value="Delete" class="btn btn-default" id="submit" /> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

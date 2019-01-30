@@ -14,6 +14,11 @@ namespace Ewart.ViewModel
 
         public IEnumerable<Student> User { get; set; }
 
+
+        public IEnumerable<TimeTable> PlannedLesson { get; set; }
+
+        public TimeTable ClassTime { get; set; }
+
         public List<DateTime> CalDateTimes = new List<DateTime>();
 
 

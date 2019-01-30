@@ -37,23 +37,52 @@ namespace Ewart.Controllers
 
 
 
-        public IActionResult TimeTable()
+        public IActionResult TimeTable(int month)
         {
 
             var year = DateTime.Now.Year;
-            var month = DateTime.Now.Month;
 
-            var CurrentMonth = GetDates(2019, 1);
+            //Set the month to the current month by default.
+            if (month == 0)
+            {
+                month = DateTime.Now.Month;
+            }
+
+
+            var CurrentMonth = GetDates(2019, month);
 
             var courseViewModel = new CourseViewModel()
             {
-                CalDateTimes = CurrentMonth
+                CalDateTimes = CurrentMonth,
+                individualSubjects = _context.classes.ToList(),
+                PlannedLesson = _context.timetables.ToList()
+
             };
 
 
             return View(courseViewModel);
         }
 
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TimeTable(CourseViewModel timeTable)
+        {
+
+
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(timeTable.ClassTime);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(TimeTable));
+            }
+
+
+            return View(timeTable);
+
+        }
 
 
         //Get all the days in the current month and year.

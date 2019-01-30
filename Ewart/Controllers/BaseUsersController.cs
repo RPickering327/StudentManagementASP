@@ -59,7 +59,7 @@ namespace Ewart.Controllers
             return View(baseViewModel);
         }
 
-        //When a new teacher of teaching assitant is added
+     
         [HttpPost]
         public async Task<IActionResult> Index(BaseUserViewModel User)
         {
